@@ -16,14 +16,14 @@ pub struct TcpConnection
   
   pub rcv_nxt: u32,
   
-  pub retrans_timer: Option<Instant>
+  pub retrans_timer: Option<Instant>,
   
   pub rto: Duration,
 }
 
 impl TcpConnection
 {
-  pub fn new() -> self 
+  pub fn new() -> Self 
   {
     TcpConnection
     {
@@ -44,7 +44,7 @@ impl TcpConnection
 pub fn send_syn(conn: &mut TcpConnection)
 {
   let initial_seq = 1000;
-  conn.snd_una = inital_seq;
+  conn.snd_una = initial_seq;
   conn.snd_nxt = initial_seq + 1;
   
   conn.retrans_timer = Some(Instant::now());
